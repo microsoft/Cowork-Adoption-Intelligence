@@ -36,6 +36,10 @@ store them in an unapproved location.
   assumptions, reconciliation results, and exceptions.
 - Apply approved retention and deletion requirements.
 - Review all exported media for identifiers and tenant URLs.
+- Keep customer, tenant, DRPP, source-template, and rendered-QA screenshots
+  outside the Git working tree.
+- Commit report previews only when they use deterministic synthetic data and
+  are listed in `images/report-pages/SYNTHETIC_PROVENANCE.json`.
 - Apply the required sensitivity label before sharing a refreshed customer
   report.
 
@@ -46,15 +50,22 @@ controls. This repository is public. Never place customer data, credentials,
 tenant URLs, identifiable screenshots, or local profile paths in commits,
 branches, pull requests, or issues.
 
-`Cowork Adoption Intelligence V6.pbit` is data-free. It contains a model schema
-and two blank required customer parameters:
+The only permitted report-page images are the provenance-backed synthetic
+previews under `images/report-pages/`. Screenshots rendered from DRPP, customer,
+tenant, source-template, or other non-synthetic data must not be committed.
+
+`Cowork Adoption Intelligence V7.pbit` is data-free. It contains a model schema
+and two required customer parameters:
 
 - `Cowork Adoption Purview File`
 - `Cowork Adoption Users File`
 
+Both parameters are blank by default. Customers must enter their own approved
+direct CSV paths when opening the template.
+
 Package validation found no imported `DataModel` payload, no local QA paths, and
 no customer source filenames. The package contains 8 report pages, 296 visuals,
-29 bookmarks, 49 model tables, 353 measures, and 32 relationships.
+29 bookmarks, 50 model tables, 362 measures, and 32 relationships.
 
 The verified package carries the tenant **Public** label. Package metadata
 records:
@@ -91,5 +102,5 @@ tenant's policy.
 
 The automation, preprocessor, and fabricated sample packages under `release/`
 are retained for existing V5 preprocessed-entity deployments. They are not the
-V6 ingestion path. Their security and operating guidance remains under
-`automation/` and must not be presented as the V6 setup flow.
+V7 ingestion path. Their security and operating guidance remains under
+`automation/` and must not be presented as the V7 setup flow.

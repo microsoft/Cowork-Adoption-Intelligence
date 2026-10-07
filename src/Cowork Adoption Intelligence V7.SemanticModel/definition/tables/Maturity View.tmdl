@@ -1,0 +1,29 @@
+/// Selects the user group whose task counts appear in the ranking. Uses scheduling identifies users with lifetime scheduled-task evidence; individual tasks are not identified as scheduled.
+table 'Maturity View'
+	lineageTag: 71f34305-c198-4f97-815a-71134ec16a1e
+
+	/// Choose Users for adoption breadth or Tasks for activity concentration.
+	column View
+		dataType: string
+		lineageTag: b28a8a9a-78ab-49fc-a963-92a15fe429f8
+		sourceColumn: [View]
+		sortByColumn: Sort
+
+	column Sort
+		dataType: int64
+		isHidden
+		lineageTag: dfac295b-c105-4d96-ba9e-398ca8cd85f2
+		summarizeBy: none
+		sourceColumn: [Sort]
+
+	partition 'Maturity View' = calculated
+		mode: import
+		source =
+				DATATABLE(
+				    "View", STRING,
+				    "Sort", INTEGER,
+				    {
+				        {"Delegating", 1},
+				        {"Uses scheduling", 2}
+				    }
+				)

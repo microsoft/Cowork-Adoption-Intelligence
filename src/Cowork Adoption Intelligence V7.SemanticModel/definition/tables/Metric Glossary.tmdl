@@ -1,0 +1,129 @@
+table 'Metric Glossary'
+	lineageTag: 7a6fa9dc-56c6-4955-ba38-99a15e42b939
+
+	column Page
+		dataType: string
+		lineageTag: 371f32a7-311c-42f8-a6ac-55ea911a988d
+		summarizeBy: none
+		sourceColumn: Page
+		sortByColumn: PageOrder
+
+	column Metric
+		dataType: string
+		lineageTag: e390a11d-33d8-45d3-82f5-561723b0b656
+		summarizeBy: none
+		sourceColumn: Metric
+
+	column Description
+		dataType: string
+		lineageTag: 01509042-77cb-4fea-8381-0f86f311b0a9
+		summarizeBy: none
+		sourceColumn: Description
+
+	column DataStatus
+		dataType: string
+		lineageTag: 9b698593-2cc7-41d4-b156-bc7b72c4e343
+		summarizeBy: none
+		sourceColumn: DataStatus
+
+	column PageOrder
+		dataType: int64
+		lineageTag: 68628de8-a773-41e3-ba0b-a4fbd2c9757d
+		summarizeBy: none
+		sourceColumn: PageOrder
+
+	column MetricOrder
+		dataType: int64
+		lineageTag: 26e74550-a41f-451d-9a0a-dece76d1093f
+		summarizeBy: none
+		sourceColumn: MetricOrder
+
+	column PageDescription
+		dataType: string
+		lineageTag: 841c84ef-afbb-42cb-92f5-1e1bbf57f0d9
+		summarizeBy: none
+		sourceColumn: PageDescription
+
+	column SortKey
+		dataType: int64
+		formatString: ;;;
+		lineageTag: 9c6d2b3a-8e14-4f0a-b6c7-2d1e5a7f9c3b
+		summarizeBy: none
+		sourceColumn: SortKey
+
+	partition 'Metric Glossary' = m
+		mode: import
+		source =
+				let
+					Seed = #table(
+						type table [Page = text, Metric = text, Description = text, DataStatus = text, PageOrder = Int64.Type, MetricOrder = Int64.Type, PageDescription = text],
+						{
+							{"Adoption Scorecard", "Purpose", "Start with adoption health, then move to weekly trends, scalable work patterns, maturity, category users, or capacity scenarios.", "Reference", 1, 1, "Start here for adoption health, decision routes, and source coverage."},
+							{"Adoption Scorecard", "Observed data source", "Cowork activity is measured from customer Purview and Copilot audit-log records filtered to the Cowork workload. No sample activity is substituted.", "Observed", 1, 2, "Start here for adoption health, decision routes, and source coverage."},
+							{"Adoption Scorecard", "Data period", "The connected audit-log date range. Weekly visuals align dates to Monday-starting weeks and automatically use the latest week with observed Cowork activity.", "Observed", 1, 3, "Start here for adoption health, decision routes, and source coverage."},
+							{"Adoption Scorecard", "Data Status", "Observed comes directly from source records; Derived is calculated from observed fields; Modeled uses declared assumptions; Unavailable means required evidence is missing. Convention marks a template-defined rule, Reference explains a definition, and Optional input requires a separate customer export.", "Reference", 1, 4, "Start here for adoption health, decision routes, and source coverage."},
+							{"Adoption Scorecard", "Filters by page", "Filter availability varies by page and can be inline or behind Open filters. Capacity Assumptions controls only modeled outputs on Demand & Capacity Scenario.", "Reference", 1, 5, "Start here for adoption health, decision routes, and source coverage."},
+							{"Adoption Scorecard", "Calendar date filter", "Where present, the Between slicer on Dim_Date[Date] filters selected calendar dates.", "Observed", 1, 6, "Start here for adoption health, decision routes, and source coverage."},
+							{"Adoption Scorecard", "LLM / model filter", "Where present, filters Cowork activity by observed Purview ModelProviderName. It can show not available when the tenant export omits model attribution.", "Optional input", 1, 7, "Start here for adoption health, decision routes, and source coverage."},
+							{"Adoption Scorecard", "Scheduled-data readiness", "Reports whether the optional Microsoft admin center usage export is connected and whether lifetime scheduled-task evidence is available.", "Optional input", 1, 8, "Start here for adoption health, decision routes, and source coverage."},
+							{"Adoption Scorecard", "Power users %", "Share of users classified in the rolling 12-week Power tier: the top 10% by prompt volume who were active in at least 9 of 12 weeks. At least 20 active users are required for tiering.", "Derived", 1, 9, "Start here for adoption health, decision routes, and source coverage."},
+							{"Adoption Scorecard", "Weekly active users", "Distinct users with at least one observed Cowork activity in the latest active week. In weekly charts and tables, it evaluates separately for each week.", "Observed", 1, 10, "Start here for adoption health, decision routes, and source coverage."},
+							{"Adoption Scorecard", "Weekly tasks", "Distinct observed Cowork conversation threads in the latest active week.", "Observed", 1, 11, "Start here for adoption health, decision routes, and source coverage."},
+							{"Adoption Scorecard", "Prompts per active user", "Observed Cowork prompt count divided by weekly active users, evaluated at the latest active week on cards and per week on trends.", "Derived", 1, 12, "Start here for adoption health, decision routes, and source coverage."},
+							{"Adoption Scorecard", "Active days per user", "Average number of distinct days each active user used Cowork during a week.", "Derived", 1, 13, "Start here for adoption health, decision routes, and source coverage."},
+							{"Adoption Scorecard", "Weekly return rate", "Share of users active in the prior week who were also active in the current week.", "Derived", 1, 14, "Start here for adoption health, decision routes, and source coverage."},
+							{"Weekly Adoption & Usage", "Usage overview bookmark", "ESS-inspired view combining weekly Cowork tasks, previous-week task volume, weekly active users, and ranked department and country usage.", "Derived", 2, 1, "Bookmark views for usage concentration and weekly adoption patterns."},
+							{"Weekly Adoption & Usage", "Previous week", "Cowork task volume from the week immediately before each displayed week. It is shown as context, not added to current-week tasks.", "Observed", 2, 2, "Bookmark views for usage concentration and weekly adoption patterns."},
+							{"Weekly Adoption & Usage", "Latest 12 active weeks", "The rolling display window ending on the latest week that contains observed Cowork activity. Older weeks return blank in these visuals; Calendar date, Department, Country, Value tier, LLM / model, and Copilot License are available behind More filters.", "Derived", 2, 3, "Bookmark views for usage concentration and weekly adoption patterns."},
+							{"Weekly Adoption & Usage", "Metric bookmarks", "Usage overview, weekly active users, power users %, prompts per user, active days, and return rate switch the central view without clearing Calendar date, Department, Country, Value tier, LLM / model, or Copilot License filters.", "Reference", 2, 4, "Bookmark views for usage concentration and weekly adoption patterns."},
+							{"Weekly Adoption & Usage", "Heatmap color", "Color is a relative intensity cue within the current filtered visual. Darker cells mean higher values; always read the number for precision.", "Reference", 2, 5, "Bookmark views for usage concentration and weekly adoption patterns."},
+							{"Adoption Maturity", "Users delegating or using scheduling", "Users classified as Delegating or Uses scheduling divided by active Cowork users in the current filter context. Uses scheduling means the user has lifetime scheduled-task evidence; it does not identify individual tasks as automated. This is a direct population share, not a weighted score.", "Derived", 5, 1, "How deeply users delegate work and how consistently they use Cowork."},
+							{"Adoption Maturity", "Tasks using 2+ skills", "Observed Cowork tasks that invoke at least two skills or tools divided by all observed tasks.", "Observed", 5, 2, "How deeply users delegate work and how consistently they use Cowork."},
+							{"Adoption Maturity", "Average observed thread span", "Average elapsed minutes from the first to last observed audit event in a Cowork thread. This is not measured human attention time.", "Observed", 5, 3, "How deeply users delegate work and how consistently they use Cowork."},
+							{"Adoption Maturity", "Average skills per task", "Observed skill invocations divided by distinct Cowork threads.", "Derived", 5, 4, "How deeply users delegate work and how consistently they use Cowork."},
+							{"Adoption Maturity", "Cowork prompt-volume tier", "Rolling 12-week tiers ranked within the selected tenant population: Power is the top 10% by prompt volume and active in at least 9 of 12 weeks; Habitual is the top 40% and active in at least 9 weeks; Novice is the top 80%; Low is below that; Inactive has no prompts. At least 20 active users are required; smaller populations return Insufficient sample.", "Convention", 5, 5, "How deeply users delegate work and how consistently they use Cowork."},
+							{"Adoption Maturity", "Delegation ladder", "One customer-facing ladder is used throughout the report: Not started has no observed tasks; Trying is shorter single-skill work; Using has an average observed thread span of at least 5 minutes; Delegating has at least 30% multi-skill tasks; Uses scheduling has any lifetime scheduled-task total. The 5-minute and 30% thresholds are template conventions to revisit with tenant evidence.", "Convention", 5, 6, "How deeply users delegate work and how consistently they use Cowork."},
+							{"Adoption Maturity", "Power users %", "Power users divided by everyone classified in the rolling 12-week Cowork prompt-volume tier, including the Insufficient sample state when the active population is below 20. Treat it as an enablement signal, not a performance rating.", "Derived", 5, 7, "How deeply users delegate work and how consistently they use Cowork."},
+							{"Adoption Maturity", "Scheduled tasks / all tasks", "Lifetime reported scheduled tasks divided by lifetime reported total tasks. It requires the optional Microsoft admin center usage export and does not vary with the date filter.", "Optional input", 5, 8, "How deeply users delegate work and how consistently they use Cowork."},
+							{"Adoption Maturity", "Uses scheduling group", "Shows task counts for users with any lifetime scheduled-task evidence. It does not identify the listed individual tasks as scheduled or automated.", "Optional input", 5, 9, "How deeply users delegate work and how consistently they use Cowork."},
+							{"Category Users", "Tasks", "Observed Cowork task threads in the selected work categories and current filter context.", "Observed", 6, 1, "Who uses each work category and how activity is distributed across departments."},
+							{"Category Users", "Users with tasks", "Distinct users with at least one task in the selected work categories.", "Observed", 6, 2, "Who uses each work category and how activity is distributed across departments."},
+							{"Category Users", "Average tasks per user", "Selected-category tasks divided by users with tasks.", "Derived", 6, 3, "Who uses each work category and how activity is distributed across departments."},
+							{"Category Users", "Departments represented", "Distinct matched departments represented by users with selected-category tasks.", "Optional input", 6, 4, "Who uses each work category and how activity is distributed across departments."},
+							{"Category Users", "Users in selected categories", "User-level task counts, active weeks, usage maturity stage, and last activity date for the selected categories.", "Observed", 6, 5, "Who uses each work category and how activity is distributed across departments."},
+							{"Category Users", "Selected-category tasks by department", "Selected-category task counts summarized by matched department.", "Optional input", 6, 6, "Who uses each work category and how activity is distributed across departments."},
+							{"Category Users", "Heat intensity", "Darker cells show higher activity within the filtered table. Activity is an enablement signal, not an employee-performance rating.", "Reference", 6, 7, "Who uses each work category and how activity is distributed across departments."},
+							{"Category Users", "Interpretation boundary", "Confirm role fit, willingness, and context before enablement outreach. Do not use the page for employment decisions.", "Reference", 6, 8, "Who uses each work category and how activity is distributed across departments."},
+							{"Demand & Capacity Scenario", "Observed tasks", "Distinct observed Cowork task threads in the current filter context.", "Observed", 4, 1, "Observed task demand and modeled capacity scenarios by work category."},
+							{"Demand & Capacity Scenario", "Classification coverage", "Business-classified tasks divided by all observed tasks.", "Derived", 4, 2, "Observed task demand and modeled capacity scenarios by work category."},
+							{"Demand & Capacity Scenario", "Modeled assisted hours", "Observed tasks multiplied by selected category minutes and divided by 60. This is a scenario, not measured attention or realized savings.", "Modeled", 4, 3, "Observed task demand and modeled capacity scenarios by work category."},
+							{"Demand & Capacity Scenario", "Modeled labor value", "Modeled assisted hours multiplied by the loaded labor rate. This is a scenario, not realized financial value.", "Modeled", 4, 4, "Observed task demand and modeled capacity scenarios by work category."},
+							{"Demand & Capacity Scenario", "Observed task share", "Each category's observed tasks divided by all observed tasks in the current filter context.", "Derived", 4, 5, "Observed task demand and modeled capacity scenarios by work category."},
+							{"Demand & Capacity Scenario", "Modeled hours share", "Each category's modeled assisted hours divided by all modeled assisted hours in the current filter context.", "Modeled", 4, 6, "Observed task demand and modeled capacity scenarios by work category."},
+							{"Demand & Capacity Scenario", "Selected minutes", "Low, Mid, High, or Custom category minutes selected through Capacity Assumptions.", "Reference", 4, 7, "Observed task demand and modeled capacity scenarios by work category."},
+							{"Demand & Capacity Scenario", "Department evidence", "Users, tasks, and highest category summarized by matched department.", "Optional input", 4, 8, "Observed task demand and modeled capacity scenarios by work category."},
+							{"Demand & Capacity Scenario", "Primary tool and model filters", "Optional filters for observed primary business tool and Copilot model attribution.", "Optional input", 4, 9, "Observed task demand and modeled capacity scenarios by work category."},
+							{"Scalable Work Patterns", "Tasks", "Observed Cowork task threads in the current filter context.", "Observed", 3, 1, "Which work categories have enough breadth, depth, and consistency to scale."},
+							{"Scalable Work Patterns", "Task users", "Distinct users represented by observed Cowork tasks.", "Observed", 3, 2, "Which work categories have enough breadth, depth, and consistency to scale."},
+							{"Scalable Work Patterns", "Tasks per user", "Observed tasks divided by task users.", "Derived", 3, 3, "Which work categories have enough breadth, depth, and consistency to scale."},
+							{"Scalable Work Patterns", "Active weeks", "Distinct weeks with observed Cowork task activity.", "Observed", 3, 4, "Which work categories have enough breadth, depth, and consistency to scale."},
+							{"Scalable Work Patterns", "Category scale signals", "Bubble position compares task-user breadth and tasks-per-user depth; bubble size shows task volume.", "Derived", 3, 5, "Which work categories have enough breadth, depth, and consistency to scale."},
+							{"Scalable Work Patterns", "Evidence by work category", "Tasks, task users, tasks per user, and active weeks by work category. Heat intensity is relative within each column.", "Derived", 3, 6, "Which work categories have enough breadth, depth, and consistency to scale."},
+							{"Scalable Work Patterns", "Department and users", "Department task totals with expandable user detail when matching organization enrichment is available.", "Optional input", 3, 7, "Which work categories have enough breadth, depth, and consistency to scale."},
+							{"Scalable Work Patterns", "Interpretation boundary", "Scale signals support enablement prioritization; they do not measure work quality or employee performance.", "Reference", 3, 8, "Which work categories have enough breadth, depth, and consistency to scale."},
+							{"Capacity Assumptions", "Destination page", "These controls drive only Capacity hours and Labor-capacity scenario on Demand & Capacity Scenario.", "Reference", 7, 1, "Configure the modeled outputs shown on Demand & Capacity Scenario."},
+							{"Capacity Assumptions", "Estimate basis", "Low, Mid, and High use governed research-based category estimates. Custom activates the eight customer-editable minute controls.", "Reference", 7, 2, "Configure the modeled outputs shown on Demand & Capacity Scenario."},
+							{"Capacity Assumptions", "Custom category minutes", "Eight synchronized controls set customer-specific capacity minutes for Analysis & Research, Document & content, Email workflows, Meeting workflows, Communication workflows, Specialized workflows, Write or debug code, and General assistance / Other.", "Modeled", 7, 3, "Configure the modeled outputs shown on Demand & Capacity Scenario."},
+							{"Capacity Assumptions", "Capacity-hours calculation", "Observed task count multiplied by selected category minutes and divided by 60. It is a scenario estimate, not measured elapsed time or proven productivity.", "Modeled", 7, 4, "Configure the modeled outputs shown on Demand & Capacity Scenario."},
+							{"Capacity Assumptions", "Unaffected metrics", "Observed tasks, users, active weeks, adoption, maturity, and enablement-partner evidence do not change when these assumptions change.", "Reference", 7, 5, "Configure the modeled outputs shown on Demand & Capacity Scenario."},
+							{"Capacity Assumptions", "Comparability", "Document customer-edited Custom values before comparison. Results using different category assumptions are not directly comparable.", "Reference", 7, 6, "Configure the modeled outputs shown on Demand & Capacity Scenario."},
+							{"Adoption Metric Guide", "Section filter", "Lists the eight report page display names in report order and filters the guide to definitions for the selected page.", "Reference", 8, 1, "Definitions and data-status guidance for every report page."},
+							{"Adoption Metric Guide", "Sort order", "Rows sort by page order and then metric order through SortKey = PageOrder × 100 + MetricOrder.", "Reference", 8, 2, "Definitions and data-status guidance for every report page."},
+							{"Adoption Metric Guide", "Interpretation boundary", "Read Data Status before interpreting a metric, and use trends plus local context rather than a single score for enablement or governance decisions.", "Reference", 8, 3, "Definitions and data-status guidance for every report page."}
+						}
+					),
+					Final = Table.AddColumn(Seed, "SortKey", each [PageOrder] * 100 + [MetricOrder], Int64.Type)
+				in
+					Final
+
+	annotation PBI_ResultType = Table

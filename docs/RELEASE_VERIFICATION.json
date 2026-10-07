@@ -1,26 +1,32 @@
 {
   "release": {
-    "version": "6.0.0",
+    "version": "7.0.0",
     "status": "testing",
-    "date": "2026-10-02",
-    "layout": "focused-eight-page",
+    "date": "2026-10-07",
+    "layout": "focused-eight-page-maturity-clarified",
     "ingestion": "direct-pax-paired-csv"
   },
   "artifacts": [
     {
-      "path": "Cowork Adoption Intelligence V6.pbit",
-      "bytes": 766803,
-      "sha256": "B9E100D0677D06D6D2B7B6410A77FEF9DECA838A9296EC9833E19D9D96A4C6EF",
+      "path": "Cowork Adoption Intelligence V7.pbit",
+      "bytes": 840824,
+      "sha256": "50D495810EF3ECABD8AA119CBC45582CBED5024D4CFE8E1FDEE8C3436D292CDD",
       "requiredParameters": [
         "Cowork Adoption Purview File",
         "Cowork Adoption Users File"
       ],
       "requiredParameterDefaultsBlank": true,
-      "zipEntries": 352,
+      "zipEntries": 355,
       "containsImportedDataModel": false,
       "containsDataModelSchema": true,
       "containsCustomerData": false,
       "packagedModelLoadVerified": true
+    },
+    {
+      "path": "release/archive/Cowork Adoption Intelligence V6.0.0 - Direct PAX.pbit",
+      "bytes": 766803,
+      "sha256": "B9E100D0677D06D6D2B7B6410A77FEF9DECA838A9296EC9833E19D9D96A4C6EF",
+      "status": "legacy-direct-pax-release"
     },
     {
       "path": "release/archive/Cowork Adoption Intelligence V5.0.0 - Preprocessed Entities.pbit",
@@ -42,12 +48,12 @@
     }
   ],
   "report": {
-    "publishName": "Cowork Adoption Intelligence V6",
+    "publishName": "Cowork Adoption Intelligence V7",
     "pages": 8,
     "visuals": 296,
     "bookmarks": 29,
     "pageOrder": [
-      "Cowork Adoption Scorecard",
+      "Adoption Scorecard",
       "Weekly Adoption & Usage",
       "Scalable Work Patterns",
       "Demand & Capacity Scenario",
@@ -64,28 +70,59 @@
     "packagedBookmarkTargetsMissing": 0,
     "renderedQa": {
       "pagesReviewed": 8,
+      "publishedRenderAssets": 8,
+      "publishedRenderSet": "v7-deterministic-synthetic",
+      "repositoryScreenshotPolicy": "synthetic-only-with-provenance",
+      "provenanceManifest": "images/report-pages/SYNTHETIC_PROVENANCE.json",
+      "sourceGenerator": "build_sample_data.py",
+      "sourceGeneratorSeed": 20260907,
+      "syntheticUsers": 72,
+      "syntheticTasks": 900,
+      "identityDomain": "example.com",
+      "resourceHost": "tenant.example.com",
+      "drppDataUsed": false,
+      "customerDataUsed": false,
+      "recoveryBannersDetected": 0,
+      "externalChangeBannersDetected": 0,
       "errorMessagesDetected": 0,
-      "departmentHeatmapsRendered": true,
-      "taskMatrixHeatmapsRendered": true,
-      "categoryShareLabelsRendered": true
+      "maturityUserGroupsReviewed": [
+        "Delegating",
+        "Uses scheduling"
+      ],
+      "postFixLiveDesktopReopenVerified": true,
+      "delegatingTasks": 212,
+      "usesSchedulingTasks": 688,
+      "cohortTaskTotal": 900,
+      "taskDataLabelsRendered": true,
+      "kpiLabelsReviewed": true
     }
   },
   "model": {
-    "tables": 49,
-    "measures": 353,
+    "tables": 50,
+    "measures": 362,
     "relationships": 32,
-    "packagedBimLoadVerified": true,
-    "requiredNewMeasuresPresent": true
+    "expressions": 13,
+    "sourceTmdlLoadVerified": true,
+    "packagedBimLoadVerified": true
   },
   "runtimeQa": {
-    "observedTasks": 97,
-    "taskUsers": 16,
-    "modeledAssistedHours": 52.016666666666666,
-    "modeledLaborValue": 3745.2,
-    "observedCategoryShareTotal": 1.0,
-    "modeledCategoryShareTotal": 1.0,
-    "afterHoursTasks": 34,
-    "afterHoursShare": 0.35051546391752575
+    "dataClassification": "deterministic-synthetic",
+    "generatorSeed": 20260907,
+    "observedTasks": 900,
+    "taskUsers": 72,
+    "modeledAssistedHours": 505.81666666666666,
+    "modeledLaborValue": 36418.8,
+    "afterHoursTasks": 665,
+    "afterHoursShare": 0.7388888888888889,
+    "reportedScheduledTasks": 96,
+    "scheduledTaskShare": 0.10666666666666667,
+    "multiSkillTaskShare": 1.0,
+    "businessClassifiedTasks": 876,
+    "unclassifiedTasks": 0,
+    "orchestrationOnlyTasks": 24,
+    "usesSchedulingUsers": 50,
+    "tasksUsedBySchedulingCohort": 688,
+    "delegatingOrSchedulingShare": 1.0
   },
   "templateLabel": {
     "statusBarDisplayName": "Public",
@@ -102,8 +139,11 @@
     "dataModelSchemaJsonParsed": true,
     "localQaPathsDetected": 0,
     "customerSourceFilenamesDetected": 0,
+    "customerIdentifiersDetected": 0,
+    "embeddedImageEntries": 1,
+    "embeddedReportScreenshots": 0,
     "missingBookmarkTargets": 0,
-    "desktopNormalizedDuplicateDateSlicer": true
+    "expectedReleaseMarkersDetected": 6
   },
   "security": {
     "embeddedUserProfilePaths": false,
@@ -111,7 +151,7 @@
     "generatedCustomerDataTracked": false,
     "localPowerBiStateTracked": false,
     "credentialsTracked": false,
-    "jsonDocumentsParsed": 347,
+    "jsonDocumentsParsed": 343,
     "repositoryRelativeLinksResolved": true,
     "gitDiffCheckPassed": true
   }

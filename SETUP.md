@@ -1,6 +1,6 @@
-# Set up Cowork Adoption Intelligence V6
+# Set up Cowork Adoption Intelligence V7
 
-V6 reads two paired CSV files produced by one PAX Cowork Adoption run. It does
+V7 reads two paired CSV files produced by one PAX Cowork Adoption run. It does
 not require the previous Python preprocessor or a folder of generated entity
 files.
 
@@ -28,7 +28,7 @@ model.
 
 Use the official Microsoft
 [Portable Audit eXporter (PAX)](https://github.com/microsoft/PAX) Purview Audit
-Log Processor. The validated V6 release uses
+Log Processor. The validated V7 release uses
 [`PAX_Purview_Audit_Log_Processor_v1.11.15.ps1`](https://github.com/microsoft/PAX/releases/download/purview-v1.11.15/PAX_Purview_Audit_Log_Processor_v1.11.15.ps1).
 Review the
 [versioned PAX documentation](https://github.com/microsoft/PAX/blob/release/release_documentation/Purview_Audit_Log_Processor/PAX_Purview_Audit_Log_Processor_Documentation_v1.11.x.md)
@@ -50,7 +50,7 @@ have security, privacy, and compliance owners approve the collection before use.
 
 ### Interactive PowerShell example
 
-The V6 model consumes the AIO-shaped CopilotInteraction rollup pair. For a first
+The V7 model consumes the AIO-shaped CopilotInteraction rollup pair. For a first
 validation run, keep the raw output with `-RollupPlusRaw`:
 
 ```powershell
@@ -77,7 +77,7 @@ the same run:
 - the file ending `_Users.csv` -> `Cowork Adoption Users File`
 
 Do not select the raw Purview audit CSV or the pre-rollup
-`EntraUsers_MAClicensing_<timestamp>.csv`; V6 expects the rolled-up files with
+`EntraUsers_MAClicensing_<timestamp>.csv`; V7 expects the rolled-up files with
 the `_Entity` records produced by the PAX CopilotInteraction processor.
 
 After the first run reconciles successfully, `-Rollup` can be used instead of
@@ -119,7 +119,7 @@ The equivalent `abfss://` OneLake form is also supported.
 ## Load the template
 
 1. Open
-   [`Cowork Adoption Intelligence V6.pbit`](Cowork%20Adoption%20Intelligence%20V6.pbit).
+   [`Cowork Adoption Intelligence V7.pbit`](Cowork%20Adoption%20Intelligence%20V7.pbit).
 2. Enter `Cowork Adoption Purview File`.
 3. Enter `Cowork Adoption Users File`.
 4. Select **Load**.
@@ -167,7 +167,7 @@ savings, available staff capacity, or guaranteed financial value.
 
 The automation bundle under `release/` belongs to the previous V5
 preprocessed-entity deployment. It is retained for existing installations and
-is not required by V6.
+is not required by V7.
 
 ## Publish safely
 

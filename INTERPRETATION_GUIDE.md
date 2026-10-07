@@ -24,9 +24,11 @@ demand, or guaranteed capacity.
 4. Treat small cohorts and narrow periods as directional.
 5. Record the Capacity Assumptions values used for every exported result.
 
-## Page 1: Cowork Adoption Scorecard
+The repository preview images use deterministic fabricated data only. Customer,
+tenant, DRPP, source-template, and rendered-QA screenshots remain outside the
+repository. Use the page descriptions below with the current V7 template.
 
-![Cowork Adoption Scorecard](images/report-pages/01-cowork-adoption-scorecard.png)
+## Page 1: Adoption Scorecard
 
 **Purpose:** Provide a decision-ready starting point and route the reader to the
 right evidence page. Start Here guidance is integrated into this page.
@@ -47,8 +49,6 @@ headline without its period, population, and source-coverage context.
 
 ## Page 2: Weekly Adoption & Usage
 
-![Weekly Adoption & Usage](images/report-pages/02-weekly-adoption-and-usage.png)
-
 **Purpose:** Show whether adoption is expanding and whether users return over
 time.
 
@@ -67,8 +67,6 @@ or collection gaps can look like a decline. Repeat activity is not equivalent to
 business value or quality.
 
 ## Page 3: Scalable Work Patterns
-
-![Scalable Work Patterns](images/report-pages/03-scalable-work-patterns.png)
 
 **Purpose:** Identify observed task patterns that repeat across users or periods
 and understand where assisted capacity is concentrated.
@@ -90,8 +88,6 @@ human attention or realized savings.
 
 ## Page 4: Demand & Capacity Scenario
 
-![Demand & Capacity Scenario](images/report-pages/04-demand-and-capacity-scenario.png)
-
 **Purpose:** Compare observed Cowork task demand with modeled assisted-work hours
 and labor value under editable category-minute assumptions.
 
@@ -111,8 +107,6 @@ savings, employee capacity, service levels, or financial return.
 
 ## Page 5: Adoption Maturity
 
-![Adoption Maturity](images/report-pages/05-adoption-maturity.png)
-
 **Purpose:** Show progression from initial activity toward sustained delegation
 and automation evidence.
 
@@ -131,8 +125,6 @@ productivity, seniority, or job performance. Stage labels depend on the availabl
 audit window.
 
 ## Page 6: Category Users
-
-![Category Users](images/report-pages/06-category-users.png)
 
 **Purpose:** Show the users and departments with observed activity in a selected
 work category and support authorized enablement outreach.
@@ -154,8 +146,6 @@ decisions.
 
 ## Page 7: Capacity Assumptions
 
-![Capacity Assumptions](images/report-pages/07-capacity-assumptions.png)
-
 **Purpose:** Make the customer-controlled inputs behind demand, capacity, and
 assisted-time scenarios visible and editable.
 
@@ -175,8 +165,6 @@ benchmarks, or measured customer outcomes. Category-wide substitutions should
 not replace the individual task controls.
 
 ## Page 8: Adoption Metric Guide
-
-![Adoption Metric Guide](images/report-pages/08-adoption-metric-guide.png)
 
 **Purpose:** Provide definitions, calculation boundaries, sources, and safe
 interpretation language.
