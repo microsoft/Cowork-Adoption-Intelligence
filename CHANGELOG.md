@@ -1,5 +1,41 @@
 # Changelog
 
+## 7.0.0-testing - 2026-10-07
+
+- Redesigned Adoption Maturity around direct, filter-aware evidence instead of
+  an abstract weighted delegation index.
+- Replaced the ambiguous Automating task list with the user-group selector
+  `Delegating | Uses scheduling`; task bars are explicitly titled
+  `Task count by selected users` and do not claim that individual tasks were
+  scheduled or automated.
+- Added visible task-count labels and validated both user-group states.
+- Stabilized user-group membership across task bars so each task row cannot
+  reclassify users; synthetic validation reconciles 212 Delegating and 688 Uses
+  scheduling tasks to the full 900-task population.
+- Renamed maturity KPIs with plain-language numerators and denominators:
+  delegating / scheduling, tasks using 2+ skills, active users
+  in the latest week, average steps per task, scheduled tasks / all tasks, and
+  after-hours tasks / all tasks.
+- Aligned Adoption Maturity screen-reader descriptions with the weekly stage
+  chart and direct delegating-or-scheduling population share.
+- Synchronized the Adoption Maturity bookmark with the chart's weekly date
+  grain so the saved state cannot restore the retired monthly projection.
+- Completed the eight-page Fit to page review against deterministic fabricated
+  data and published only that synthetic render set. DRPP, source-template,
+  tenant, and customer-data screenshots remain excluded.
+- Audited the deterministic synthetic baseline: 876 of 900 tasks are business
+  classified, 24 are orchestration-only, and no tasks are unclassified.
+- Removed customer-specific parameter defaults so both required inputs open as
+  blank prompts, with direct SharePoint HTTPS-path and authentication guidance.
+- Synchronized the editable V7 PBIP source with the packaged report and live
+  semantic model.
+- Validated 8 pages, 296 visuals, 29 bookmarks, 50 model tables, 362 measures,
+  and 32 relationships with zero PBIR or TMDL errors.
+- Exported `Cowork Adoption Intelligence V7.pbit` without imported customer
+  data, local QA paths, or customer identifiers; retained the tenant Public
+  label and Desktop-generated `SecurityBindings`.
+- Archived the prior direct-PAX V6 template for rollback.
+
 ## 6.0.0-testing - 2026-10-02
 
 - Replaced the V5 preprocessed-entity ingestion path with two direct PAX
