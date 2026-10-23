@@ -21,11 +21,18 @@ paired CSV outputs from one PAX Cowork Adoption run:
 
 No Python preprocessing or 13-file entity build is required for V8.
 
-> 🎬 **New — Cowork Adoption Intelligence Overview (video):** a quick
-> walkthrough of the report's capabilities — the fastest way to see what it
-> does before diving into setup.
->
-> <video controls width="900" src="https://raw.githubusercontent.com/microsoft/Cowork-Adoption-Intelligence/main/media/Cowork-Adoption-Intelligence-Overview.mp4"></video>
+**[Watch First ↓](#-watch-first)** &nbsp;·&nbsp; **[Start in three steps ↓](#start-in-three-steps)** &nbsp;·&nbsp; **[Synthetic report preview ↓](#synthetic-report-preview)**
+
+<a id="-watch-first"></a>
+
+## 🎬 Watch First
+
+A quick walkthrough of the report's capabilities — the fastest way to see what
+it does before diving into setup.
+
+[![Watch the overview on YouTube](https://img.youtube.com/vi/hk0XBBimTT8/maxresdefault.jpg)](https://youtu.be/hk0XBBimTT8)
+
+**▶ [Watch on YouTube](https://youtu.be/hk0XBBimTT8)**
 
 ## Start in three steps
 
